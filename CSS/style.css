@@ -1,0 +1,344 @@
+/* em = better to use this instead of pixels because they react and ratio up to any screen size while px (pixels) don't 
+        used for margins and paddings*/
+body {
+  margin: 1.5em;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* rem = relative em, it's preferably used for font sizes*/
+a {
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+/* vh = viewport height: the height of what's viewable in the browser
+        z-index: depending on the value(which can be negative), it makes an element fall on top of or under another element
+                it can only be used with "position: absolute;" or "position: fixed;" */
+.hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url(../images/redshoe.jpg);
+  background-size: cover;
+  background-position-x: 20%;
+  background-position-y: 20%;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  -webkit-animation: introLoad 2s forwards;
+          animation: introLoad 2s forwards;
+}
+
+.logo {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+}
+
+.logo span {
+  color: red;
+}
+
+nav {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 40%;
+  background: white;
+  z-index: 1;
+  text-transform: uppercase;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: -webkit-transform .75s ease-in-out;
+  transition: -webkit-transform .75s ease-in-out;
+  transition: transform .75s ease-in-out;
+  transition: transform .75s ease-in-out, -webkit-transform .75s ease-in-out;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 7em auto;
+  /* PADDING on a link element won't work unless it is displayed block*/
+}
+
+nav ul a {
+  color: black;
+  padding: .75em 2em;
+  display: block;
+}
+
+nav ul a:hover {
+  background-color: #ebebeb;
+  width: auto;
+}
+
+nav svg.close {
+  float: right;
+  margin: 2em;
+  width: 2em;
+}
+
+nav svg.close path:hover {
+  fill: #d61d1d;
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header svg {
+  width: 2.2em;
+  margin: -.6em;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-top: 2em;
+  line-height: 3.3rem;
+}
+
+.subhead {
+  font-size: 1.4rem;
+}
+
+section.hero {
+  color: white;
+  height: 85vh;
+  -webkit-animation: moveDown 1s ease-in-out forwards;
+          animation: moveDown 1s ease-in-out forwards;
+  opacity: 0;
+}
+
+section.hero svg.down-arrow {
+  stroke: white;
+  position: absolute;
+  bottom: 4em;
+  width: 1.25em;
+  animation: moveArrow 1s alternate-reverse infinite;
+  margin-bottom: auto;
+}
+
+section.hero svg.down-arrow path {
+  fill: white;
+}
+
+.more-info img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 15em;
+}
+
+.more-info .title {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.more-info .desc {
+  line-height: 1.5rem;
+}
+
+/* We adjust the display to fit different screen sizes with what's called MEDIA QUERIES*/
+@media only screen and (min-width: 680px) {
+  body {
+    margin: 1.5em 5em;
+    font-family: 'Poppins', sans-serif;
+  }
+  svg.down-arrow {
+    margin-top: 3.7em;
+    width: auto;
+  }
+}
+
+.open-nav {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+/* This is desktop screen size so, the menu bar should hide at this point */
+@media only screen and (min-width: 920px) {
+  .menu {
+    display: none;
+  }
+  nav {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    position: unset;
+    display: block;
+    width: auto;
+    height: auto;
+    background: none;
+  }
+  nav svg.close {
+    display: none;
+  }
+  nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    margin: 0;
+  }
+  nav ul a {
+    color: white;
+    padding: .5em 1.5em;
+    font-size: .95rem;
+  }
+  nav ul a:hover {
+    background: none;
+    text-decoration: underline;
+  }
+  .hero-img {
+    left: unset;
+    right: 0;
+    width: 50%;
+    height: 42em;
+  }
+  .logo {
+    color: black;
+  }
+  .logo span {
+    color: red;
+  }
+  section.hero {
+    color: black;
+    height: auto;
+    width: 40%;
+    margin-bottom: 8em;
+  }
+  section.hero svg.down-arrow {
+    stroke: black;
+    color: black;
+    position: unset;
+    width: 1.4em;
+  }
+  section.hero svg.down-arrow path {
+    fill: black;
+  }
+  .feature {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (auto)[2];
+        grid-template-columns: repeat(2, auto);
+    gap: 3em;
+    margin-bottom: 8em;
+  }
+  .feature img {
+    width: 25em;
+  }
+  .feature .content {
+    text-align: right;
+    width: 25em;
+  }
+  .feature.flip {
+    margin-bottom: 8em;
+        grid-template-areas: "left right";
+  }
+  .feature.flip img {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-area: left;
+  }
+  .feature.flip .content {
+    text-align: left;
+    width: 25em;
+    -ms-grid-column-align: left;
+        justify-self: left;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .wrapper {
+    width: 1110px;
+    margin: 0 auto;
+  }
+  .feature {
+    gap: 0;
+  }
+}
+
+@-webkit-keyframes introLoad {
+  from {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  to {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes introLoad {
+  from {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  to {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@-webkit-keyframes moveArrow {
+  from {
+    -webkit-transform: translateY(-35px);
+            transform: translateY(-35px);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes moveArrow {
+  from {
+    -webkit-transform: translateY(-35px);
+            transform: translateY(-35px);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes moveDown {
+  from {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes moveDown {
+  from {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+div {
+  justify-items: center;
+}
+/*# sourceMappingURL=style.css.map */
